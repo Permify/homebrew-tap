@@ -8,55 +8,44 @@ class Permify < Formula
   version "0.0.0-alpha8"
   license "GNU General Public License v3.0"
 
+  depends_on "go" => :build
+
   on_macos do
-    if Hardware::CPU.arm?
-      url "https://github.com/Permify/permify/releases/download/v0.0.0-alpha8/permify_0.0.0-alpha8_darwin_arm64.tar.gz", :using => CurlDownloadStrategy
-      sha256 "7d4ed0b0e897cf4176ac3ff8edd8fcd52238ffe2f522b01c95c1bb83d5e01946"
+    url "https://github.com/Permify/permify/releases/download/v0.0.0-alpha8/permify_0.0.0-alpha8_darwin_all.tar.gz", using: CurlDownloadStrategy
+    sha256 "50c4203c884beb315a12a7e8c8ab0c1fa4e76ac7656050d7c9986e30692c2dd9"
 
-      def install
-        if !File.exists? "permify"
-          system "go build ./cmd/permify"
-        end
-        bin.install "permify"
+    def install
+      if !File.exists? "permify"
+        system "go build --ldflags ./cmd/permify"
       end
-    end
-    if Hardware::CPU.intel?
-      url "https://github.com/Permify/permify/releases/download/v0.0.0-alpha8/permify_0.0.0-alpha8_darwin_amd64.tar.gz", :using => CurlDownloadStrategy
-      sha256 "4676dccf3a2db1291dca9bab4d5240f2dca6604c2e56b977c18177ce874d7128"
-
-      def install
-        if !File.exists? "permify"
-          system "go build ./cmd/permify"
-        end
-        bin.install "permify"
-      end
+      bin.install "permify"
     end
   end
 
   on_linux do
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/Permify/permify/releases/download/v0.0.0-alpha8/permify_0.0.0-alpha8_linux_arm64.tar.gz", :using => CurlDownloadStrategy
-      sha256 "bc5623b9fefbf8e963092edc312b96724e1719846a555d2f1250375269f66b14"
+      url "https://github.com/Permify/permify/releases/download/v0.0.0-alpha8/permify_0.0.0-alpha8_linux_arm64.tar.gz", using: CurlDownloadStrategy
+      sha256 "45210abbaf4fadd208f217294a1a23db6831d606907726ccc94ae6143e58aff3"
 
       def install
         if !File.exists? "permify"
-          system "go build ./cmd/permify"
+          system "go build --ldflags ./cmd/permify"
         end
         bin.install "permify"
       end
     end
     if Hardware::CPU.intel?
-      url "https://github.com/Permify/permify/releases/download/v0.0.0-alpha8/permify_0.0.0-alpha8_linux_amd64.tar.gz", :using => CurlDownloadStrategy
-      sha256 "e7d398b1c278c6cb4736a64fca279e3bdd3e2b5214cf63072da48311395944f5"
+      url "https://github.com/Permify/permify/releases/download/v0.0.0-alpha8/permify_0.0.0-alpha8_linux_amd64.tar.gz", using: CurlDownloadStrategy
+      sha256 "f0767a7b8dfd2ed259c76972327be231bee1adc40724e8aded0c544ba9c1bf21"
 
       def install
         if !File.exists? "permify"
-          system "go build ./cmd/permify"
+          system "go build --ldflags ./cmd/permify"
         end
         bin.install "permify"
       end
     end
   end
 
-  depends_on "go" => :build
+  head "https://github.com/Permify/permify.git", :branch => "master"
 end
