@@ -14,6 +14,9 @@ class Permify < Formula
       sha256 "63a20ca09f0e009ec3285fe54d216f0d3c1692f28797fa4d1da2e486026f946c"
 
       def install
+        if !File.exists? "permify"
+          system "go build ./cmd/permify"
+        end
         bin.install "permify"
       end
     end
@@ -22,6 +25,9 @@ class Permify < Formula
       sha256 "6ebd2b5d9bb0202ebcd30ea17c4e2cc300d3d69f75800d840da539f020e81167"
 
       def install
+        if !File.exists? "permify"
+          system "go build ./cmd/permify"
+        end
         bin.install "permify"
       end
     end
@@ -33,6 +39,9 @@ class Permify < Formula
       sha256 "cb085183d1911469354b7f6de883dabba0a580abe09155d61580bc841325cb0c"
 
       def install
+        if !File.exists? "permify"
+          system "go build ./cmd/permify"
+        end
         bin.install "permify"
       end
     end
@@ -41,6 +50,9 @@ class Permify < Formula
       sha256 "789cb8a4a6fca1e6416033720044aa79d8d61393484d54beeeaf3509d8fc553f"
 
       def install
+        if !File.exists? "permify"
+          system "go build ./cmd/permify"
+        end
         bin.install "permify"
       end
     end
