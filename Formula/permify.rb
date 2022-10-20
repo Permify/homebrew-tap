@@ -11,7 +11,7 @@ class Permify < Formula
   on_macos do
     if Hardware::CPU.arm?
       url "https://github.com/Permify/permify/releases/download/v0.0.0-alpha8/permify_0.0.0-alpha8_darwin_arm64.tar.gz"
-      sha256 "58204e1ce84a36eeba35daac3e8d50de4e06289721c70b535041dad76f895108"
+      sha256 "63a20ca09f0e009ec3285fe54d216f0d3c1692f28797fa4d1da2e486026f946c"
 
       def install
         bin.install "permify"
@@ -19,7 +19,7 @@ class Permify < Formula
     end
     if Hardware::CPU.intel?
       url "https://github.com/Permify/permify/releases/download/v0.0.0-alpha8/permify_0.0.0-alpha8_darwin_amd64.tar.gz"
-      sha256 "6efa881042f44008b6f5b669f856e96c56ea3aeca8504e1b4535157f5db43fe5"
+      sha256 "6ebd2b5d9bb0202ebcd30ea17c4e2cc300d3d69f75800d840da539f020e81167"
 
       def install
         bin.install "permify"
@@ -30,7 +30,7 @@ class Permify < Formula
   on_linux do
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
       url "https://github.com/Permify/permify/releases/download/v0.0.0-alpha8/permify_0.0.0-alpha8_linux_arm64.tar.gz"
-      sha256 "1dc568e40893c185e7bd493397b074282d5e404ff86351584f03758a0e7b2921"
+      sha256 "cb085183d1911469354b7f6de883dabba0a580abe09155d61580bc841325cb0c"
 
       def install
         bin.install "permify"
@@ -38,7 +38,7 @@ class Permify < Formula
     end
     if Hardware::CPU.intel?
       url "https://github.com/Permify/permify/releases/download/v0.0.0-alpha8/permify_0.0.0-alpha8_linux_amd64.tar.gz"
-      sha256 "303a542ee7d6b309b5b001a905348e02df2a110d81105a9be4732778fd30153a"
+      sha256 "789cb8a4a6fca1e6416033720044aa79d8d61393484d54beeeaf3509d8fc553f"
 
       def install
         bin.install "permify"
