@@ -5,14 +5,14 @@
 class Permify < Formula
   desc "Permify is an open-source authorization service & policy engine based on Google Zanzibar."
   homepage "https://github.com/Permify/permify"
-  version "0.0.0-alpha8"
+  version "0.0.0-alpha9"
   license "GNU General Public License v3.0"
 
   depends_on "go" => :build
 
   on_macos do
-    url "https://github.com/Permify/permify/releases/download/v0.0.0-alpha8/permify_0.0.0-alpha8_darwin_all.tar.gz", using: CurlDownloadStrategy
-    sha256 "50c4203c884beb315a12a7e8c8ab0c1fa4e76ac7656050d7c9986e30692c2dd9"
+    url "https://github.com/Permify/permify/releases/download/v0.0.0-alpha9/permify_0.0.0-alpha9_darwin_all.tar.gz", using: CurlDownloadStrategy
+    sha256 "8cd0b404bd04921cf37c65f921e4593c52b4c7b500a70302c3e800bf8a522ea0"
 
     def install
       if !File.exists? "permify"
@@ -23,9 +23,9 @@ class Permify < Formula
   end
 
   on_linux do
-    if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/Permify/permify/releases/download/v0.0.0-alpha8/permify_0.0.0-alpha8_linux_arm64.tar.gz", using: CurlDownloadStrategy
-      sha256 "45210abbaf4fadd208f217294a1a23db6831d606907726ccc94ae6143e58aff3"
+    if Hardware::CPU.intel?
+      url "https://github.com/Permify/permify/releases/download/v0.0.0-alpha9/permify_0.0.0-alpha9_linux_amd64.tar.gz", using: CurlDownloadStrategy
+      sha256 "ca8c50c39f909b3cd0f8ce9599e3a0900d0e2da3f1414bd8008236aa8293ef2d"
 
       def install
         if !File.exists? "permify"
@@ -34,9 +34,9 @@ class Permify < Formula
         bin.install "permify"
       end
     end
-    if Hardware::CPU.intel?
-      url "https://github.com/Permify/permify/releases/download/v0.0.0-alpha8/permify_0.0.0-alpha8_linux_amd64.tar.gz", using: CurlDownloadStrategy
-      sha256 "f0767a7b8dfd2ed259c76972327be231bee1adc40724e8aded0c544ba9c1bf21"
+    if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
+      url "https://github.com/Permify/permify/releases/download/v0.0.0-alpha9/permify_0.0.0-alpha9_linux_arm64.tar.gz", using: CurlDownloadStrategy
+      sha256 "7c1df6ab1ac7f9b75c4d4c819bd7cc0ea0bfd0d94545b6ad82953faf956177a7"
 
       def install
         if !File.exists? "permify"
