@@ -12,7 +12,7 @@ class Permify < Formula
 
   on_macos do
     url "https://github.com/Permify/permify/releases/download/v0.2.0/permify_0.2.0_darwin_all.tar.gz", using: CurlDownloadStrategy
-    sha256 "69d587f68574bd8a802d53104a179baba039ed893bc7a504f2553f0b399e16f2"
+    sha256 "98e7fbf9bf116f920c09b6d7b3459e1781b628ca745848e77774d6e53edd6757"
 
     def install
       if !File.exists? "permify"
@@ -23,9 +23,9 @@ class Permify < Formula
   end
 
   on_linux do
-    if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/Permify/permify/releases/download/v0.2.0/permify_0.2.0_linux_arm64.tar.gz", using: CurlDownloadStrategy
-      sha256 "a68906bddb2006d8a6ebcaf4441f50de8e1deffdd40e5e4d31587923dcc10c67"
+    if Hardware::CPU.intel?
+      url "https://github.com/Permify/permify/releases/download/v0.2.0/permify_0.2.0_linux_amd64.tar.gz", using: CurlDownloadStrategy
+      sha256 "9279bfbb688bd31046d886e11b82b629be0fa9e2975626e6072e9e38df32bec0"
 
       def install
         if !File.exists? "permify"
@@ -34,9 +34,9 @@ class Permify < Formula
         bin.install "permify"
       end
     end
-    if Hardware::CPU.intel?
-      url "https://github.com/Permify/permify/releases/download/v0.2.0/permify_0.2.0_linux_amd64.tar.gz", using: CurlDownloadStrategy
-      sha256 "96a2bfdd77df38bdee3d1cbf0c7fec0ccead16c7986300f2ba1552a849f0d765"
+    if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
+      url "https://github.com/Permify/permify/releases/download/v0.2.0/permify_0.2.0_linux_arm64.tar.gz", using: CurlDownloadStrategy
+      sha256 "ecd14c1940317c3933f3a333eb72edbe0364b1ca8876e9e9811f96e3544588f8"
 
       def install
         if !File.exists? "permify"
