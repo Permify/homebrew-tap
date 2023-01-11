@@ -5,14 +5,14 @@
 class Permify < Formula
   desc "Permify is an open-source authorization service & policy engine based on Google Zanzibar."
   homepage "https://github.com/Permify/permify"
-  version "0.2.1"
+  version "0.2.2"
   license "GNU General Public License v3.0"
 
   depends_on "go" => :build
 
   on_macos do
-    url "https://github.com/Permify/permify/releases/download/v0.2.1/permify_0.2.1_darwin_all.tar.gz", using: CurlDownloadStrategy
-    sha256 "2b226d91c77a18879091bb273e747442910f4c6574739039298599c60af045e1"
+    url "https://github.com/Permify/permify/releases/download/v0.2.2/permify_0.2.2_darwin_all.tar.gz", using: CurlDownloadStrategy
+    sha256 "881324b3e71e3a88eb37e0bff0b28530ad9866457397b7123f38f56061a29742"
 
     def install
       if !File.exists? "permify"
@@ -23,9 +23,9 @@ class Permify < Formula
   end
 
   on_linux do
-    if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/Permify/permify/releases/download/v0.2.1/permify_0.2.1_linux_arm64.tar.gz", using: CurlDownloadStrategy
-      sha256 "e1e993352092acc26c3aeaf4f91a25c16d8c06b99d86b3e2f2e3e391f9ea3498"
+    if Hardware::CPU.intel?
+      url "https://github.com/Permify/permify/releases/download/v0.2.2/permify_0.2.2_linux_amd64.tar.gz", using: CurlDownloadStrategy
+      sha256 "4e2050cc69b6db03c2c6aaf7c6151ea9b491afc71ad07028fd4b7148a65ffa53"
 
       def install
         if !File.exists? "permify"
@@ -34,9 +34,9 @@ class Permify < Formula
         bin.install "permify"
       end
     end
-    if Hardware::CPU.intel?
-      url "https://github.com/Permify/permify/releases/download/v0.2.1/permify_0.2.1_linux_amd64.tar.gz", using: CurlDownloadStrategy
-      sha256 "593c71cf62932cfe272a1bae70e420459ce7972c078468e9b57691e2c3d1e368"
+    if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
+      url "https://github.com/Permify/permify/releases/download/v0.2.2/permify_0.2.2_linux_arm64.tar.gz", using: CurlDownloadStrategy
+      sha256 "9e7000800fdceae3c36d265e86183405efc57c52299553470048191954ec8a8a"
 
       def install
         if !File.exists? "permify"
