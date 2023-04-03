@@ -5,43 +5,34 @@
 class Permify < Formula
   desc "Permify is an open-source authorization service & policy engine based on Google Zanzibar."
   homepage "https://github.com/Permify/permify"
-  version "0.3.4"
-  license "GNU General Public License v3.0"
+  version "0.3.6"
+  license "Apache-2.0"
 
   depends_on "go" => :build
 
   on_macos do
-    url "https://github.com/Permify/permify/releases/download/v0.3.4/permify_0.3.4_darwin_all.tar.gz", using: CurlDownloadStrategy
-    sha256 "158a41f952eb099d2ffcc73e8cf94e594062f02c4f8f22d7b3d060554a8d6c3d"
+    url "https://github.com/Permify/permify/releases/download/v0.3.6/permify_0.3.6_darwin_all.tar.gz", using: CurlDownloadStrategy
+    sha256 "6f0babf7033c478c1d8c741a0d12955c727261ae84dc5f416719fe426e759881"
 
     def install
-      if !File.exists? "permify"
-        system "go build --ldflags ./cmd/permify"
-      end
       bin.install "permify"
     end
   end
 
   on_linux do
-    if Hardware::CPU.intel?
-      url "https://github.com/Permify/permify/releases/download/v0.3.4/permify_0.3.4_linux_amd64.tar.gz", using: CurlDownloadStrategy
-      sha256 "24f2abd385e2e41e1368b038dce483821fd7e07da37c2c0b55967bc93985553a"
+    if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
+      url "https://github.com/Permify/permify/releases/download/v0.3.6/permify_0.3.6_linux_arm64.tar.gz", using: CurlDownloadStrategy
+      sha256 "d473f4a9ec623dbc207476e3c07ac838c71fb2217102c917f749ef3c82ce8226"
 
       def install
-        if !File.exists? "permify"
-          system "go build --ldflags ./cmd/permify"
-        end
         bin.install "permify"
       end
     end
-    if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/Permify/permify/releases/download/v0.3.4/permify_0.3.4_linux_arm64.tar.gz", using: CurlDownloadStrategy
-      sha256 "a8da02559a040b9a9394368b06fad9316c72ed7f496c9db7d890eb0cbfe38f2b"
+    if Hardware::CPU.intel?
+      url "https://github.com/Permify/permify/releases/download/v0.3.6/permify_0.3.6_linux_amd64.tar.gz", using: CurlDownloadStrategy
+      sha256 "f648ae6fc862289496db000c52349a94807f29fd44a3889c38c66f549d121587"
 
       def install
-        if !File.exists? "permify"
-          system "go build --ldflags ./cmd/permify"
-        end
         bin.install "permify"
       end
     end
