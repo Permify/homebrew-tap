@@ -5,14 +5,14 @@
 class Permify < Formula
   desc "Permify is an open-source authorization service & policy engine based on Google Zanzibar."
   homepage "https://github.com/Permify/permify"
-  version "0.8.4"
+  version "0.8.5"
   license "Apache-2.0"
 
   depends_on "go" => :build
 
   on_macos do
-    url "https://github.com/Permify/permify/releases/download/v0.8.4/permify_0.8.4_darwin_all.tar.gz", using: CurlDownloadStrategy
-    sha256 "4c0178aa2f8aeef6f02dc378f6ad975abc4d0e8273c650bd41d28f973d006a1b"
+    url "https://github.com/Permify/permify/releases/download/v0.8.5/permify_0.8.5_darwin_all.tar.gz", using: CurlDownloadStrategy
+    sha256 "9f857114f7587146d62f2c3bfbcc6f2a5afba50d9677f7feb3aa32c00c6e0b8a"
 
     def install
       bin.install "permify"
@@ -20,20 +20,24 @@ class Permify < Formula
   end
 
   on_linux do
-    if Hardware::CPU.intel?
-      url "https://github.com/Permify/permify/releases/download/v0.8.4/permify_0.8.4_linux_amd64.tar.gz", using: CurlDownloadStrategy
-      sha256 "903aa6aa851ac63d7452e890cb9278330fa776e592d11150a5d7ef024ae45bab"
+    on_intel do
+      if Hardware::CPU.is_64_bit?
+        url "https://github.com/Permify/permify/releases/download/v0.8.5/permify_0.8.5_linux_amd64.tar.gz", using: CurlDownloadStrategy
+        sha256 "a0039065e7d75dee68b1171f2937fde09e905074c10a53a77eba421e8ead127f"
 
-      def install
-        bin.install "permify"
+        def install
+          bin.install "permify"
+        end
       end
     end
-    if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/Permify/permify/releases/download/v0.8.4/permify_0.8.4_linux_arm64.tar.gz", using: CurlDownloadStrategy
-      sha256 "76e5cc1b724fb589b9f9c5d9a6a69bd27f8eb3422c0480d40256056e7970d668"
+    on_arm do
+      if Hardware::CPU.is_64_bit?
+        url "https://github.com/Permify/permify/releases/download/v0.8.5/permify_0.8.5_linux_arm64.tar.gz", using: CurlDownloadStrategy
+        sha256 "195f6b29ecd300cfabac8d99752a1c438ec723debfdaf6d5f6468f9359055277"
 
-      def install
-        bin.install "permify"
+        def install
+          bin.install "permify"
+        end
       end
     end
   end
