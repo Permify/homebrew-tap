@@ -5,14 +5,14 @@
 class Permify < Formula
   desc "Permify is an open-source authorization service & policy engine based on Google Zanzibar."
   homepage "https://github.com/Permify/permify"
-  version "1.6.4"
+  version "1.6.5"
   license "Apache-2.0"
 
   depends_on "go" => :build
 
   on_macos do
-    url "https://github.com/Permify/permify/releases/download/v1.6.4/permify_1.6.4_darwin_all.tar.gz", using: CurlDownloadStrategy
-    sha256 "da6d269beafed2e7283244994238e5f86347a1f28d8dfe3fa65ceea8f0568e6d"
+    url "https://github.com/Permify/permify/releases/download/v1.6.5/permify_1.6.5_darwin_all.tar.gz", using: CurlDownloadStrategy
+    sha256 "ef06f2d8a469432682cb06e553b193d8417b91bb865cf4b8e8526a0811ac6f87"
 
     def install
       bin.install "permify"
@@ -22,8 +22,8 @@ class Permify < Formula
   on_linux do
     if Hardware::CPU.intel?
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/Permify/permify/releases/download/v1.6.4/permify_1.6.4_linux_amd64.tar.gz", using: CurlDownloadStrategy
-        sha256 "d0b8066e13eaac3398a0355efc4411bac539680b50dba78feb75cafc1c94b848"
+        url "https://github.com/Permify/permify/releases/download/v1.6.5/permify_1.6.5_linux_amd64.tar.gz", using: CurlDownloadStrategy
+        sha256 "e09ba7476b19e91887adfe3723fa6e6616e455ff1bdefd6c6088c0d9df74d864"
 
         def install
           bin.install "permify"
@@ -32,8 +32,8 @@ class Permify < Formula
     end
     if Hardware::CPU.arm?
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/Permify/permify/releases/download/v1.6.4/permify_1.6.4_linux_arm64.tar.gz", using: CurlDownloadStrategy
-        sha256 "32fe43119d1ef6898f0323410c0d653c3697869d44da3643a02e5c0712579733"
+        url "https://github.com/Permify/permify/releases/download/v1.6.5/permify_1.6.5_linux_arm64.tar.gz", using: CurlDownloadStrategy
+        sha256 "f170f4fb0ae672023240296bd4d74da300662c646ae695387f0b7b8c34e7b9e6"
 
         def install
           bin.install "permify"
